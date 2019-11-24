@@ -96,4 +96,23 @@ def health_monitor():
 if __name__=="__main__":
     while True:
         health_monitor()
-    
+'''
+SERIAL_PORT="/dev/ttyS0"
+ser=serial.Serial(SERIAL_PORT,baudrate=9600,timeout=5)
+
+ser.write(str.encode("ATD+918970736699;\r"))
+print("Dialling...")
+time.sleep(10)
+
+ser.write(str.encode("ATH\r"))
+print("HAnging up")
+
+ser.write(str.encode('AT+CMGF=1\r'))
+print("text mode enabled")
+time.sleep(3)
+ser.write(str.encode('AT+CMGS="+918970736699"\r'))
+msg="hello"
+time.sleep(3)
+ser.write(str.encode(msg+chr(26)))
+time.sleep(3)
+print("message sent")'''
